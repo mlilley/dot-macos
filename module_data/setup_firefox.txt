@@ -70,6 +70,7 @@ user_pref("toolkit.telemetry.bhrPing.enabled", false);
 user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
 user_pref("toolkit.telemetry.newProfilePing.enabled", false);
 user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.server", "");
 
 // Disable Data Reporting
 user_pref("datareporting.healthreport.uploadEnabled", false);
@@ -80,6 +81,7 @@ user_pref("datareporting.usage.uploadEnabled", false);
 // Disable Additional Data Collection
 user_pref("app.normandy.enabled", false);
 user_pref("app.normandy.api_url", "");
+user_pref("app.shield.optoutstudies.enabled", false);
 user_pref("browser.ping-centre.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
