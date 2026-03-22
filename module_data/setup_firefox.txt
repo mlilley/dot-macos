@@ -61,3 +61,4 @@ user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
 user_pref("layout.css.prefers-color-scheme.content-override", 0);
 user_pref("media.hardwaremediakeys.enabled", false);
 user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
