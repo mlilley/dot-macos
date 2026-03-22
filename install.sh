@@ -70,7 +70,7 @@ install_brew_mas
 install_firefox
 install_vscode
 install_rectangle
-install_mas_bitwarden
+#install_mas_bitwarden
 install_brew_docker
 install_brew_colima
 install_brew_devpod
