@@ -69,6 +69,9 @@ verify_brew_cask_not_installed() {
 
 brew_formula_install() {
     local formula="$1"
+
+    log_info "Installing brew formula $formula"
+
     if ! is_command_available "brew"; then
         log_error "Error: homebrew is not installed"
         return 1
@@ -77,7 +80,6 @@ brew_formula_install() {
         log_info "Brew formula $1 already installed, skipping"
         return 0
     fi
-    log_info "Installing brew formula $1"
     if ! brew install "$1"; then
         log_error "Error: failed to install brew formula $1"
         return 1
@@ -85,17 +87,20 @@ brew_formula_install() {
 }
 
 brew_cask_install() {
+    local cask="$1"
+
+    log_info "Installing brew cask $cask"
+
     if ! is_command_available "brew"; then
         log_error "Error: homebrew is not installed"
         return 1
     fi
-    if is_brew_cask_installed "$1"; then
-        log_info "Brew cask $1 already installed, skipping"
+    if is_brew_cask_installed "$cask"; then
+        log_info "Brew cask $cask already installed, skipping"
         return 0
     fi
-    log_info "Installing brew cask $1"
-    if ! brew install --cask "$1"; then
-        log_error "Error: failed to install brew cask $1"
+    if ! brew install --cask "$cask"; then
+        log_error "Error: failed to install brew cask $cask"
         return 1
     fi
 }
@@ -103,6 +108,9 @@ brew_cask_install() {
 mas_install() {
     local appId="$1"
     local appName="$2"
+
+    log_info "Installing Mac App Store app $appName"
+
     if ! is_command_available "mas"; then
         log_error "Error: mas is not installed"
         return 1
@@ -111,7 +119,6 @@ mas_install() {
         log_info "Mac App Store app $appName already installed, skipping"
         return 0
     fi
-    log_info "Installing Mac App Store app $appName"
     if ! mas install "$appId"; then
         log_error "Error: failed to install Mac App Store app $appName"
         return 1
@@ -126,6 +133,8 @@ install_app_dmg_download() {
     fi
     local app="$1" # ex: "MyApp.app"
     local url="$2"
+
+    log_info "Installing $app"
 
     if [[ "$force" -eq 0 ]] && is_app_installed "${app}"; then
         log_info "App $app already installed; skipping"
@@ -173,6 +182,8 @@ install_app_zip_download() {
     fi
     local app="$1" # ex: "MyApp.app"
     local url="$2"
+
+    log_info "Installing $app"
 
     if [[ "$force" -eq 0 ]] && is_app_installed "${app}"; then
         log_info "App $app already installed; skipping"
