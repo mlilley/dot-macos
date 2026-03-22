@@ -67,6 +67,12 @@ verify_brew_cask_not_installed() {
     fi
 }
 
+register_app() {
+    local app="$1"
+    # Force app LaunchService registration, so subsequent name resolution works immediately
+    /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -f "/Applications/$app"
+}
+
 brew_formula_install() {
     local formula="$1"
 
@@ -172,6 +178,10 @@ install_app_dmg_download() {
         log_error "Error: failed to install app to /Applications/$app"
         return 1
     fi
+    if ! register_app "$app"; then
+        log_error "Error: failed to register app with LaunchServices"
+        return 1
+    fi
 }
 
 install_app_zip_download() {
@@ -218,6 +228,10 @@ install_app_zip_download() {
     fi
     if ! cp -R "$tmp/extracted/$app" "/Applications"; then 
         log_error "Error: failed to install app to /Applications/$app"
+        return 1
+    fi
+    if ! register_app "$app"; then
+        log_error "Error: failed to register app with LaunchServices"
         return 1
     fi
 }
