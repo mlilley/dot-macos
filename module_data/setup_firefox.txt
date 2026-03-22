@@ -26,8 +26,6 @@ user_pref("browser.translations.enable", false);
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"unified-extensions-area\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"vertical-spacer\",\"urlbar-container\",\"downloads-button\",\"fxa-toolbar-menu-button\",\"unified-extensions-button\"],\"TabsToolbar\":[\"firefox-view-button\",\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"vertical-tabs\":[],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\",\"screenshot-button\"],\"dirtyAreaCache\":[\"nav-bar\",\"vertical-tabs\",\"PersonalToolbar\",\"TabsToolbar\"],\"currentVersion\":23,\"newElementCount\":3}");
 user_pref("browser.urlbar.suggest.searches", false);
 user_pref("browser.warnOnQuitShortcut", false);
-user_pref("datareporting.healthreport.uploadEnabled", false);
-user_pref("datareporting.usage.uploadEnabled", false);
 user_pref("extensions.activeThemeID", "default-theme@mozilla.org");
 user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false);
@@ -60,5 +58,28 @@ user_pref("signon.rememberSignons", false);
 user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
 user_pref("layout.css.prefers-color-scheme.content-override", 0);
 user_pref("media.hardwaremediakeys.enabled", false);
-user_pref("datareporting.policy.dataSubmissionEnabled", false);
+
+// Disable Telemetry
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("tookkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.rejected", true);
+user_pref("toolkit.telemetry.prompted", 2);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+
+// Disable Data Reporting
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.healthreport.service.enabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("datareporting.usage.uploadEnabled", false);
+
+// Disable Additional Data Collection
+user_pref("app.normandy.enabled", false);
+user_pref("app.normandy.api_url", "");
+user_pref("browser.ping-centre.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.telemetry", false);
+user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
