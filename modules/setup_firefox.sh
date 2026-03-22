@@ -22,6 +22,11 @@ setup_firefox() {
         log_error "Error: failed to launch Firefox.app"
         return 1
     fi
+    log_info "Waiting for firefox to start..."
+    while ! pgrep -x Firefox &>/dev/null; do
+        sleep 0.5
+    done
+    sleep 10
     while pgrep -x Firefox &>/dev/null; do
         read -p "Please close Firefox.app, then press Enter to continue"
     done
