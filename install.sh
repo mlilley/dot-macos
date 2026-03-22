@@ -66,6 +66,7 @@ setup_dev
 setup_ssh
 
 install_homebrew
+install_brew_mas
 install_firefox
 install_vscode
 install_rectangle
