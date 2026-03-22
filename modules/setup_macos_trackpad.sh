@@ -8,7 +8,6 @@ setup_macos_trackpad() {
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
     defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-    kill cfprefsd
 
     # enable Secondary Click: click or tap with two fingers 
     defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
@@ -22,4 +21,6 @@ setup_macos_trackpad() {
     # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
     # defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
 
+    # apply changes
+    killall cfprefsd
 }
