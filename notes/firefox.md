@@ -84,6 +84,9 @@ user_pref("sidebar.visibility", "hide-sidebar");
 user_pref("signon.management.page.breach-alerts.enabled", false);
 user_pref("signon.rememberSignons", false);
 user_pref("trailhead.firstrun.didSeeAboutWelcome", true);
+user_pref("layout.css.prefers-color-scheme.content-override", 0);
+user_pref("media.hardwaremediakeys.enabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
 ```
 
 Non-settings entries in prefs.js (that should be excluded) include:
@@ -162,7 +165,6 @@ extensions.webcompat.enable_interventions
 extensions.webcompat.enable_shims
 extensions.webextensions.uuids
 gecko.handlerService.defaultHandlersVersion
-layout.css.prefers-color-scheme.content-override
 media.gmp-gmpopenh264.abi
 media.gmp-gmpopenh264.hashValue
 media.gmp-gmpopenh264.lastDownload
