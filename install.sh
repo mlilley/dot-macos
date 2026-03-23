@@ -64,13 +64,15 @@ setup_macos_keyboard
 setup_macos_trackpad
 setup_dev
 setup_ssh
+setup_vim
 
 install_homebrew
 install_brew_mas
 install_firefox
 install_vscode
 install_rectangle
-#install_mas_bitwarden
+install_iterm2
+install_mas_bitwarden
 install_brew_docker
 install_brew_colima
 install_brew_devpod

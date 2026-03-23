@@ -3,6 +3,9 @@ setup_macos_trackpad() {
 
     # disable 'natural' scrolling (requires restart)
     defaults write -g com.apple.swipescrolldirection -bool false
+    defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+    killall cfprefsd
+    sudo killall WindowServer
 
     # enable tap-to-click (for built-in trackpads, Magic trackpads, and at the login screen)
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
