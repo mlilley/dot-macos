@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-source ../lib/utils.sh
 install_iterm2() {
 
     # --- install ---
