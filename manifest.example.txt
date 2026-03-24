@@ -1,0 +1,31 @@
+# dot-macos manifest
+# List the functions to invoke, one per line.
+# Lines starting with # and blank lines are ignored.
+# Functions are called in order.
+
+# macOS settings
+setup_macos_dock
+setup_macos_finder
+setup_macos_keyboard
+setup_macos_trackpad
+setup_dev
+setup_ssh
+setup_vim
+
+# Core tooling
+install_homebrew
+install_brew_mas
+
+# Applications
+install_firefox
+install_vscode
+install_rectangle
+install_iterm2
+install_mas_bitwarden
+install_brew_docker
+install_brew_colima
+install_brew_devpod
+
+# Post-install configuration
+setup_firefox
+# setup_vscode

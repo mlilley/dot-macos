@@ -41,41 +41,58 @@ if [[ -z "${BASH_SOURCE[0]:-}" || "${BASH_SOURCE[0]}" == "/dev/stdin" ]]; then
         git clone "$REPO" "$INSTALL_DIR"
     fi
 
-    exec bash "$INSTALL_DIR/install.sh"
+    exec bash "$INSTALL_DIR/install.sh" "$@"
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="$SCRIPT_DIR/modules"
 
+# --- parse arguments ---
+MANIFEST=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --manifest)
+            MANIFEST="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown argument: $1" >&2
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -z "$MANIFEST" ]]; then
+    echo "Usage: install.sh --manifest <manifest-file>" >&2
+    exit 1
+fi
+
+if [[ ! -f "$MANIFEST" ]]; then
+    echo "Manifest file not found: $MANIFEST" >&2
+    exit 1
+fi
+
 # shellcheck source=lib/utils.sh
 source "$SCRIPT_DIR/lib/utils.sh"
 
-# Source all modules, making their exec_<name> functions available
+# Source all modules, making their functions available
 for module in "$MODULES_DIR"/*.sh; do
     [[ -f "$module" ]] || continue
     # shellcheck source=/dev/null
     source "$module"
 done
 
-# --- install modules ---
-setup_macos_dock
-setup_macos_finder
-setup_macos_keyboard
-setup_macos_trackpad
-setup_dev
-setup_ssh
-setup_vim
+# --- run manifest ---
+while IFS= read -r line || [[ -n "$line" ]]; do
+    # strip comments and blank lines
+    line="${line%%#*}"
+    line="${line#"${line%%[![:space:]]*}"}"
+    line="${line%"${line##*[![:space:]]}"}"
+    [[ -z "$line" ]] && continue
 
-install_homebrew
-install_brew_mas
-install_firefox
-install_vscode
-install_rectangle
-install_iterm2
-install_mas_bitwarden
-install_brew_docker
-install_brew_colima
-install_brew_devpod
-
-setup_firefox
-# setup_vscode
+    if declare -f "$line" > /dev/null 2>&1; then
+        "$line"
+    else
+        echo "Warning: '$line' is not a known function, skipping." >&2
+    fi
+done < "$MANIFEST"
