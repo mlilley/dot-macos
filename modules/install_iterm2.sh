@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
+source ../lib/utils.sh
 install_iterm2() {
+
     # --- install ---
+    log_info "Installing Iterm2"
     install_app_zip_download \
-       "iTerm.app", \
+       "iTerm.app" \
        "https://iterm2.com/downloads/stable/latest"
 
     # --- setup ---
+    log_info "Configuring Iterm2"
+
     local default_profile_guid="BDE63016-AEF8-418D-BE5D-BB61D141FC73"
     defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "${default_profile_guid}"
     defaults write com.googlecode.iterm2 "SuppressRestartAnnouncement" -bool true
@@ -118,4 +123,6 @@ install_iterm2() {
 EOF
     )
     defaults write com.googlecode.iterm2 "New Bookmarks" -array "$xml"
+    log_info "Done"
 }
+install_iterm2

@@ -83,7 +83,7 @@ for module in "$MODULES_DIR"/*.sh; do
 done
 
 # --- run manifest ---
-while IFS= read -r line || [[ -n "$line" ]]; do
+while IFS= read -r line <&3 || [[ -n "$line" ]]; do
     # strip comments and blank lines
     line="${line%%#*}"
     line="${line#"${line%%[![:space:]]*}"}"
@@ -95,4 +95,4 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     else
         echo "Warning: '$line' is not a known function, skipping." >&2
     fi
-done < "$MANIFEST"
+done 3< "$MANIFEST"
