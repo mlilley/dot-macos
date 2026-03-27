@@ -7,6 +7,9 @@ install_iterm2() {
        "iTerm.app" \
        "https://iterm2.com/downloads/stable/latest"
 
+    # --- install Nerd Font ---
+
+
     # --- setup ---
     log_info "Configuring Iterm2"
 
@@ -124,4 +127,3 @@ EOF
     defaults write com.googlecode.iterm2 "New Bookmarks" -array "$xml"
     log_info "Done"
 }
-install_iterm2
