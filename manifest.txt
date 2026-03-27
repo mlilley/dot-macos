@@ -21,7 +21,7 @@ install_brew_mas
 
 # Applications
 install_oh-my-zsh
-install_brew_oh-my-posh
+install_oh-my-posh
 install_firefox
 install_vscode
 install_rectangle

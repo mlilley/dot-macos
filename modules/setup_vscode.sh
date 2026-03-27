@@ -4,10 +4,14 @@ setup_vscode() {
 
     local code="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 
-    echo "Installing extensions..."
-    "$code" --install-extension eamodio.gitlens
+    # Install 'code' command
+    sudo mkdir -p "/usr/local/bin"
+    sudo ln -s "$code" code
 
-    echo "Applying settings..."
+    # Install extensions
+    "$code" --install-extension eamodio.gitlens  # gitlense
+
+    # Configure
     local settings_path="$HOME/Library/Application Support/Code/User/settings.json"
     mkdir -p "$(dirname "$settings_path")"
     cat > "$settings_path" <<'EOF'
