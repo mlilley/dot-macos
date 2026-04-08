@@ -129,4 +129,3 @@ EOF
 
     killall WallpaperAgent 2>/dev/null || true
 }
-setup_macos_wallpaper

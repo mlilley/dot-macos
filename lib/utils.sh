@@ -15,11 +15,6 @@ log_success() { echo -e "${_GREEN}  ✓   ${_RESET}${*}"; }
 log_warn()    { echo -e "${_YELLOW}  !   ${_RESET}${*}" >&2; }
 log_error()   { echo -e "${_RED}  ✗   ${_RESET}${*}" >&2; }
 
-step() {
-    echo ""
-    echo -e "${_BOLD}${_CYAN}▶ ${*}${_RESET}"
-}
-
 # --- checks ---
 
 is_command_available() {

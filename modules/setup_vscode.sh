@@ -16,7 +16,10 @@ setup_vscode() {
     mkdir -p "$(dirname "$settings_path")"
     cat > "$settings_path" <<'EOF'
 {
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "terminal.integrated.showLinkHover": false,
+    "terminal.integrated.fontFamily": "'MesloLGMDZ Nerd Font Mono'"
 }
 EOF
 

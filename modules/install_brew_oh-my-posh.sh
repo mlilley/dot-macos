@@ -6,9 +6,9 @@ install_oh-my-posh() {
     brew_formula_install oh-my-posh
 
     # install theme
-    mkdir -p "$HOME/.config/oh-my-posh"
-    curl -fsSL "https://raw.githubusercontent.com/mlilley/omp-sanfran/refs/heads/master/oh-my-posh.toml" -o "$HOME/.config/oh-my-posh/oh-my-posh.toml"
+    mkdir -p "$HOME/.config"
+    git clone "https://github.com/mlilley/omp-sanfran.git" "~/.config/omp-sanfran"
 
     # load into shells
-    echo 'eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/omp-sanfran.toml)"' >> "$HOME/.zshrc"
+    echo 'eval "$(oh-my-posh init zsh --config ~/.config/omp-sanfran/omp-sanfran-camp.toml)"' >> "$HOME/.zshrc"
 }
